@@ -1,0 +1,57 @@
+//Alle Daten
+### 
+GET http://localhost:3000/api/getall HTTP/1.1
+
+### 
+GET http://localhost:3000/api/get/1 HTTP/1.1
+
+
+//Daten hinzufügen
+### 
+POST http://localhost:3000/api/addone HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJpbGx5QmF0c29uIiwiaWF0IjoxNjY5MzkyMDgwLCJleHAiOjE2NzY1MzQ0ODB9.rfFND7gZWZi8EsX-oWgboIyuxkP3yMSVatN9MzOwoFU
+content-type: application/json
+
+{
+    "data": {
+        
+        "Name": {
+            "Vorname": "Aqane",
+            "Nachname": "Benadikt"
+        },
+        "Geburtstag": "01.10.1989",
+        "Telefonnummer": "076 591 26 49"
+    }
+}
+
+
+//Daten verändern
+### 
+PUT http://localhost:3000/api/changeone HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJpbGx5QmF0c29uIiwiaWF0IjoxNjY5MzkyMDgwLCJleHAiOjE2NzY1MzQ0ODB9.rfFND7gZWZi8EsX-oWgboIyuxkP3yMSVatN9MzOwoFU
+content-type: application/json
+
+{
+    "data": {
+        "id" : "7",
+        "Name": {
+            "Vorname": "Mihalo",
+            "Nachname": "Benadikt"
+        },
+        "Geburtstag": "01.10.2001",
+        "Telefonnummer": "076 591 26 49"
+    }
+}
+
+//Daten löschen
+### 
+DELETE http://localhost:3000/api/delete HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJpbGx5QmF0c29uIiwiaWF0IjoxNjY5MzkyMDgwLCJleHAiOjE2NzY1MzQ0ODB9.rfFND7gZWZi8EsX-oWgboIyuxkP3yMSVatN9MzOwoFU
+content-type: application/json
+
+{
+    "id": "2"
+}
+
+###########################################################
+
