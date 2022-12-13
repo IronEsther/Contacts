@@ -15,10 +15,8 @@ content-type: application/json
 {
     "data": {
         
-        "Name": {
-            "Vorname": "Aqane",
-            "Nachname": "Benadikt"
-        },
+        "Vorname": "Aqane",
+        "Nachname": "Benadikt",
         "Geburtstag": "01.10.1989",
         "Telefonnummer": "076 591 26 49"
     }
@@ -34,10 +32,8 @@ content-type: application/json
 {
     "data": {
         "id" : "7",
-        "Name": {
-            "Vorname": "Mihalo",
-            "Nachname": "Benadikt"
-        },
+        "Vorname": "Mihalo",
+        "Nachname": "Benadikt",
         "Geburtstag": "01.10.2001",
         "Telefonnummer": "076 591 26 49"
     }

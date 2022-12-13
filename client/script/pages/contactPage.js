@@ -7,7 +7,7 @@ export const renderContactPage = () => {
             <p>Nachname: <input placeholder="Nachname..." class="form-control" id="inputNachname" /></p>
             <p>Geburtstag: <input type="date" placeholder="Geburtstag..." class="form-control" id="inputGeburtstag" /></p>
             <p>Telefonnummer: <input type="tel" placeholder="Telefonnummer..." class="form-control" id="inputTelefonnummer" /></p>
-            <div id="submitButtons"><button type="submit" class="btn btn-info" onclick="addNewContact()">Einreichen</button></div>
+            <div id="submitButtons"><button type="submit" class="btn btn-info" id="addNewContact">Einreichen</button></div>
         </form>
         <h3>Meine Kontakte</h3>
         <table>
@@ -24,33 +24,65 @@ export const renderContactPage = () => {
             </tbody>
         </table>
     `;
+    document.getElementById("addNewContact").addEventListener("click", addNewContact());
 
-    fetch("http://localhost:3000/api/getall")
+    function addNewContact() {
+        let variable = {
+            data: {
+                vorname: document.getElementById("inputVorname").value,
+                nachname: document.getElementById("inputNachname").value,
+                geburtstag: document.getElementById("inputGeburtstag").value,
+                telefonnummer: document.getElementById("inputTelefonnummer").value
+            }
+        };
+    
+        fetch("http://localhost:3000/api/addone", {
+            method: "POST",
+            headers: {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJpbGx5QmF0c29uIiwiaWF0IjoxNjY5MzkyMDgwLCJleHAiOjE2NzY1MzQ0ODB9.rfFND7gZWZi8EsX-oWgboIyuxkP3yMSVatN9MzOwoFU",
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(variable)
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                (() => {
+                    
+                });
+                getAll();
+            });
+    }
+
+    function getAll(){
+        fetch("http://localhost:3000/api/getall")
         .then(res => res.json())
         .then(data => {
             console.log(data)
             data.forEach((contact, index) => {
-                document.getElementById('contactTable').innerHTML += '<tr><td id="vorname' + index + '">' + contact.Vorname + '</td><td id="nachname' + index + '">' + contact.Nachname + '</td><td id="geburtstag' + index + '">' + contact.Geburtstag + '</td><td id="telefonnummer' + index + '">' + contact.Telefonnummer + '</td><td><button class="btn btn-warning" onclick=updateContact(' + index + ')>Ueberarbeiten</button></div><button class="btn btn-danger" onclick=deleteContact(' + index + ')>Löschen</button></td></tr>';
+                document.getElementById("contactTable").innerHTML +=
+                    '<tr><td id="vorname' +
+                    index +
+                    '">' +
+                    contact.Vorname +
+                    '</td><td id="nachname' +
+                    index +
+                    '">' +
+                    contact.Nachname +
+                    '</td><td id="geburtstag' +
+                    index +
+                    '">' +
+                    contact.Geburtstag +
+                    '</td><td id="telefonnummer' +
+                    index +
+                    '">' +
+                    contact.Telefonnummer +
+                    '</td><td><button class="btn btn-warning" onclick=updateContact(' +
+                    index +
+                    ')>Ueberarbeiten</button></div><button class="btn btn-danger" onclick=deleteContact(' +
+                    index +
+                    ")>Löschen</button></td></tr>";
             })
         })
-
-    // add user function
-    var vorname = document.getElementById('inputVorname').value;
-    var nachname = document.getElementById('inputNachname').value;
-    var geburtstag = document.getElementById('inputGeburtstag').value;
-    var telefonnummer = document.getElementById('inputTelefonnummer').value;
-    var contact = new Contact(vorname, nachname, geburtstag, telefonnummer);
-    contacts.push(contact);
-
-    fetch("http://localhost:3000/api/addone", {
-        method: 'POST',
-        headers: {
-            "content-type": "application/json"
-        }
-    })
-        .then((res) => res.json())
-        .then((response) => {
-            document.getElementById('contactTable').innerHTML += '<tr><td id="inputVorname' + index + '">' + contact.Vorname + '</td><td id="inputNachname' + index + '">' + contact.Nachname + '</td><td id="inputGeburtstag' + index + '">' + contact.Geburtstag + '</td><td id="inputTelefonnummer' + index + '">' + contact.Telefonnummer + '</td><td><button class="btn btn-warning" onclick=updateContact(' + index + ')>Ueberarbeiten</button></div><button class="btn btn-danger" onclick=deleteContact(' + index + ')>Löschen</button></td></tr>';
-            getData();
-        })
+    }
 };
