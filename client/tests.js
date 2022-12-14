@@ -1,9 +1,9 @@
 // Testcase 2.1
 document.querySelector('.addBtn').click();
-document.querySelector('.vornameField').value = 'test';
-document.querySelector('.nachnameField').value = 'test';
+document.querySelector('.textField').value = 'test';
+document.querySelector('.textField').value = 'test';
 document.querySelector('.dateField').value = '2022-05-24';
-document.querySelector('.telefonnummerField').value = 'test text';
+document.querySelector('.textField').value = 'test text';
 document.querySelector('.submitBtn').click();
 if (
   !document.querySelector('body > div > div:nth-child(2) > h1').textContent ===
@@ -20,10 +20,10 @@ if (document.querySelectorAll('#contact').length > 2) {
 
 // testcase 4.1
 document.querySelector('.edit').click();
-document.querySelector('.vornameField').value = 'test';
-document.querySelector('.nachnameField').value = 'test';
+document.querySelector('.textField').value = 'test';
+document.querySelector('.textField').value = 'test';
 document.querySelector('.dateField').value = '2022-05-24';
-document.querySelector('.telefonnummerField').value = 'test text';
+document.querySelector('.textField').value = 'test text';
 document.querySelector('.submitBtn').click();
 if (
   !document.querySelector('body > div > div:nth-child(2) > h1').textContent ===
