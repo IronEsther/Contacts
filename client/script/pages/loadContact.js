@@ -1,4 +1,4 @@
-export default () => {
+export default (token) => {
   const container = document.querySelector('.container');
   let data;
   container.innerHTML = '';
@@ -28,19 +28,19 @@ export default () => {
       const labelTelefonnummer = document.createElement('label');
       const submitBtn = document.createElement('input');
 
-      labelVorname.textContent = 'Vorname';
-      labelNachname.textContent = 'Nachname';
-      labelGeburtstag.textContent = 'Geburtstag';
-      labelTelefonnummer.textContent = 'Telefonnummer';
+      labelVorname.textContent = 'Vorname:';
+      labelNachname.textContent = 'Nachname:';
+      labelGeburtstag.textContent = 'Geburtstag:';
+      labelTelefonnummer.textContent = 'Telefonnummer:';
 
       vorname.type = 'text';
-      vorname.className = 'textField';
+      vorname.className = 'vornameField';
       nachname.type = 'text';
-      nachname.className = 'textField';
+      nachname.className = 'nachnameField';
       geburtstag.type = 'date';
       geburtstag.className = 'dateField';
       telefonnummer.type = 'text';
-      telefonnummer.className = 'textField';
+      telefonnummer.className = 'telefonnummerField';
       submitBtn.type = 'submit';
       submitBtn.className = 'submitBtn';
 
@@ -80,7 +80,7 @@ export default () => {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
-              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJpbGx5QmF0c29uIiwiaWF0IjoxNjY5MzkyMDgwLCJleHAiOjE2NzY1MzQ0ODB9.rfFND7gZWZi8EsX-oWgboIyuxkP3yMSVatN9MzOwoFU'
+              Authorization: token,
             },
             body: JSON.stringify({
               data: {
@@ -106,10 +106,10 @@ export default () => {
       .then(() => {
         for (let i = 0; i < data.length; i++) {
           const contact = document.createElement('table');
-          const vorname = document.createElement('div');
-          const nachname = document.createElement('div');
-          const geburtstag = document.createElement('div');
-          const telefonnummer = document.createElement('div');
+          const vorname = document.createElement('td');
+          const nachname = document.createElement('td');
+          const geburtstag = document.createElement('td');
+          const telefonnummer = document.createElement('td');
           const changeBtn = document.createElement('button');
           const deleteBtn = document.createElement('button');
 
@@ -154,18 +154,18 @@ export default () => {
             const labelTelefonnummer = document.createElement('label');
             const submitBtn = document.createElement('input');
 
-            labelVorname.textContent = 'Vorname';
-            labelNachname.textContent = 'Nachname';
-            labelGeburtstag.textContent = 'Geburtstag';
-            labelTelefonnummer.textContent = 'Telefonnummer';
+            labelVorname.textContent = 'Vorname:';
+            labelNachname.textContent = 'Nachname:';
+            labelGeburtstag.textContent = 'Geburtstag:';
+            labelTelefonnummer.textContent = 'Telefonnummer:';
             vorname.type = 'text';
-            vorname.className = 'textField';
+            vorname.className = 'vornameField';
             nachname.type = 'text';
-            nachname.className = 'textField';
+            nachname.className = 'nachnameField';
             geburtstag.type = 'date';
             geburtstag.className = 'dateField';
             telefonnummer.type = 'text';
-            telefonnummer.className = 'textField';
+            telefonnummer.className = 'telefonnummerField';
             submitBtn.type = 'submit';
             submitBtn.className = 'submitBtn';
 
@@ -206,7 +206,7 @@ export default () => {
                   method: 'PUT',
                   headers: {
                     'content-type': 'application/json',
-                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJpbGx5QmF0c29uIiwiaWF0IjoxNjY5MzkyMDgwLCJleHAiOjE2NzY1MzQ0ODB9.rfFND7gZWZi8EsX-oWgboIyuxkP3yMSVatN9MzOwoFU'
+                    Authorization: token,
                   },
                   body: JSON.stringify({
                     data: {
@@ -229,7 +229,7 @@ export default () => {
               method: 'DELETE',
               headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJpbGx5QmF0c29uIiwiaWF0IjoxNjY5MzkyMDgwLCJleHAiOjE2NzY1MzQ0ODB9.rfFND7gZWZi8EsX-oWgboIyuxkP3yMSVatN9MzOwoFU'
+                Authorization: token,
               },
               body: JSON.stringify({
                 id: data[i].id,
@@ -243,4 +243,4 @@ export default () => {
       });
   };
   loadContact();
-}
+};

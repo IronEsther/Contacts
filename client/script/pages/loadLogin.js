@@ -1,3 +1,22 @@
+import ManageContact from './loadContact.js';
+
+let token;
+
+export const changeNav = () => {
+  if (token != null) {
+    const contacte = document.querySelector('#contacts');
+    if (contacte != null) {
+      contacte.textContent = 'Ihre Kontakte';
+      contacte.id = 'contact';
+    }
+    ManageContact(token);
+  } else {
+    alert(
+      'Sie haben keine Recht hierauf zuzugreifen. Bitte loggen Sie sich ein.',
+    );
+  }
+};
+
 export const loadLogin = () => {
   const container = document.querySelector('.container');
   container.innerHTML = '';
@@ -9,12 +28,14 @@ export const loadLogin = () => {
   benutzername.type = 'text';
   benutzername.default = 'username';
   const benutzernameLabel = document.createElement('label');
-  benutzernameLabel.textContent = 'Benutzername: ';
+  benutzernameLabel.textContent = 'Benutzername:';
+  benutzernameLabel.className = 'benutzername';
   const passwort = document.createElement('input');
   passwort.type = 'password';
   passwort.default = 'password';
   const passwortLabel = document.createElement('label');
-  passwortLabel.textContent = 'Passwort: ';
+  passwortLabel.textContent = 'Passwort:';
+  passwortLabel.className = 'passwort';
   const senden = document.createElement('input');
   senden.type = 'submit';
   senden.className = 'submitBtn';
@@ -48,9 +69,10 @@ export const loadLogin = () => {
         }),
       })
         .then((res) => res.json())
-        .then((jsonData) => {
-          if (jsonData.token !== undefined) {
-            token = `Bearer ${jsonData.token}`;
+        .then((data) => {
+          if (data.token !== undefined) {
+            token = `Bearer ${data.token}`;
+            changeNav();
           } else {
             alert('Ungültiges Login. Versuchen Sie es wieder.');
           }

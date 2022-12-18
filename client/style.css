@@ -18,6 +18,37 @@ nav ul {
   margin-bottom: 50px;
 }
 
+label{
+  padding-right:10px;
+  font-size: 20px;
+}
+input{
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.submitBtn{
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.addBtn{
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 50px;
+}
+
+.bearbeiten, .löschen{
+  margin: 20px;
+  font-size: 15px;
+}
+
+.benutzername, .passwort{
+  font-size: 20px;
+  margin-left: 20px;
+}
+
 ul {
   margin: 0;
 }
@@ -33,31 +64,26 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-input {
-  margin-bottom: 2%;
-}
-
-h1 {
-  font-size: larger;
-}
-
-nav h1 {
-  color: #fff;
-}
-
-.navItem {
-  display: inline-block;
-  color: #fff;
-  margin-right: 3%;
-  margin-left: 3%;
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-
 p {
   margin-top: 2%;
   margin-right: 3%;
   margin-left: 3%;
+}
+
+
+table{
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, td{
+  border: 1px solid #000000;
+}
+
+td{
+  padding:10px;
+  font-size: 18px;
 }
 
 footer {

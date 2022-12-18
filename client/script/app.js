@@ -1,12 +1,13 @@
 import loadHome from './pages/loadHome.js';
-import loadContact from './pages/loadContact.js';
-import {loadLogin} from './pages/loadLogin.js';
+import contactWithoutLogin from './pages/contactWithoutLogin.js';
+import {loadLogin, changeNav} from './pages/loadLogin.js';
 import errorPage from './pages/errorPage.js';
 
 const routes = {
   home: { hash: '#home', function: loadHome },
-  contacts: { hash: '#contacts', function: loadContact },
+  contacts: { hash: '#contacts', function: contactWithoutLogin },
   login: { hash: '#login', function: loadLogin },
+  loadContacts: { hash: '#contact', function: changeNav },
   error: { function: errorPage },
 };
 
@@ -27,5 +28,9 @@ contacts.addEventListener('click', () => {
 
 const loginBtn = document.querySelector('#login');
 loginBtn.addEventListener('click', () => {
+  if (loginBtn.id === 'contact') {
+    router.navigate('#contact');
+  } else {
     router.navigate('#login');
+  }
 });
